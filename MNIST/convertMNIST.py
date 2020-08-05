@@ -3,6 +3,7 @@ import tensorflow as tf
 import tensorflow_datasets as tfds
 import csv
 import os
+import platform
 from PIL import Image
 
 # CONSTANTS
@@ -12,14 +13,16 @@ DATA_IMAGE_WIDTH = 28
 DATA_IMAGE_HEIGHT = 28
 FINAL_IMAGE_WIDTH = 100
 FINAL_IMAGE_HEIGHT = 100
-TRAINING_EXPORT_DIR = "MNIST_Converted_Training\\"
+TRAINING_EXPORT_DIR = "MNIST_Converted_Training/"
 TRAINING_EXPORT_FILE = "converted_training"
 TRAINING_CSV = "training_data.csv"
-TESTING_EXPORT_DIR = "MNIST_Converted_Testing\\"
+TESTING_EXPORT_DIR = "MNIST_Converted_Testing/"
 TESTING_EXPORT_FILE = "converted_testing"
 TESTING_CSV = "test_data.csv"
 
-
+if platform.system() == 'Windows':
+    TRAINING_EXPORT_DIR = "MNIST_Converted_Training\\"
+    TESTING_EXPORT_DIR = "MNIST_Converted_Testing\\"
 
 # Convert and upscale function will take an image with DATA_IMAGE_HEIGHT and DATA_IMAGE_WIDTH dimensions
 # and create a new image with FINAL_IMAGE_WIDTH and FINAL_IMAGE_HEIGHT dimensions, where the original
